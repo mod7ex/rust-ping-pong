@@ -1,3 +1,5 @@
+// https://github.com/PistonDevelopers/Piston-Tutorials/tree/master/getting-started#writing-some-code
+
 use std::process;
 
 use glutin_window::GlutinWindow;
@@ -144,13 +146,16 @@ impl App {
 }
 
 fn main() {
+    let opengl = OpenGL::V3_2;
+
     let mut window: GlutinWindow = WindowSettings::new("Pong", [512, 342])
+        .graphics_api(opengl)
         .exit_on_esc(true)
         .build()
         .unwrap();
 
     let mut app = App {
-        gl: GlGraphics::new(OpenGL::V3_2),
+        gl: GlGraphics::new(opengl),
         left_score: 0,
         left_pos: 1,
         left_vel: 0,
